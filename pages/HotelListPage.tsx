@@ -118,13 +118,13 @@ const HotelListPage = () => {
       <ScrollView>
         <View style={{paddingTop: 25, paddingStart: 10, paddingEnd: 10}}>
           {hotelList.map(hotel => (
-            <View key={hotel.id} style={{...styles.hotelCard}}>
+            <View key={hotel.id} style={{...componentStyles.hotelCard}}>
               <Image
-                style={{...styles.hotelThumbnail}}
-                source={require('../resources/hotelThumbnail1.jpg')}
+                style={{...componentStyles.hotelThumbnail}}
+                source={require('../assets/hotelThumbnail1.jpg')}
               />
-              <View style={{...styles.hotelSpecs}}>
-                <Text style={{...styles.hotelName}}>
+              <View style={{...componentStyles.hotelSpecs}}>
+                <Text style={{...componentStyles.hotelName}}>
                   {hotel.name}{' '}
                   <View
                     style={{
@@ -139,12 +139,14 @@ const HotelListPage = () => {
                     </Text>
                   </View>
                 </Text>
-                <Text style={{...styles.hotelProp}}>{hotel.location}</Text>
-                <Text style={{...styles.hotelProp}}>
+                <Text style={{...componentStyles.hotelProp}}>
+                  {hotel.location}
+                </Text>
+                <Text style={{...componentStyles.hotelProp}}>
                   {hotel.available_rooms} rooms available
                 </Text>
               </View>
-              <View style={{...styles.hotelPrice}}>
+              <View style={{...componentStyles.hotelPrice}}>
                 <Text
                   style={{
                     fontSize: 20,
@@ -162,7 +164,7 @@ const HotelListPage = () => {
   );
 };
 
-const styles = StyleSheet.create({
+const componentStyles = StyleSheet.create({
   hotelCard: {
     position: 'relative',
     backgroundColor: 'white',

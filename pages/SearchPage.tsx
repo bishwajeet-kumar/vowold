@@ -13,6 +13,7 @@ import {
 } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
+import {mainStyle as styles} from './mainCss';
 
 const SearchPage = () => {
   const navigation = useNavigation<any>();
@@ -250,7 +251,7 @@ const SearchPage = () => {
   );
 };
 
-const styles = StyleSheet.create({
+const componentStyles = StyleSheet.create({
   fieldContainer: {
     paddingTop: 8,
     paddingBottom: 8,

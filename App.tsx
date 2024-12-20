@@ -5,24 +5,36 @@
  * @format
  */
 
-import {StyleSheet, useColorScheme} from 'react-native';
+import {useColorScheme} from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import SearchPage from './pages/SearchPage';
 import HotelListPage from './pages/HotelListPage';
+import BootSplash from 'react-native-bootsplash';
+import IntroductionPage from './pages/IntroductionPage';
 
 const Stack = createNativeStackNavigator();
 const RootStack = () => {
   return (
     <Stack.Navigator
-      initialRouteName="Home"
+      initialRouteName="Intro"
       screenOptions={{
         headerTitle: undefined, // This removes the default route name
         headerBackButtonDisplayMode: 'generic',
+        headerTintColor: 'white',
+        headerStyle: {backgroundColor: 'rgba(26, 101, 158, 1)'},
       }}>
       <Stack.Screen name="Home" component={SearchPage} />
       <Stack.Screen name="Hotels" component={HotelListPage} />
+      <Stack.Screen
+        name="Intro"
+        component={IntroductionPage}
+        options={{
+          title: 'Get Started',
+          headerStyle: {backgroundColor: 'rgba(0, 78, 137, 1)'},
+        }}
+      />
     </Stack.Navigator>
   );
 };
@@ -34,36 +46,13 @@ function App(): React.JSX.Element {
   };
 
   return (
-    <NavigationContainer>
+    <NavigationContainer
+      onReady={() => {
+        BootSplash.hide();
+      }}>
       <RootStack />
     </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  fieldContainer: {
-    paddingTop: 8,
-    paddingBottom: 8,
-  },
-  fieldCaption: {
-    fontSize: 16,
-    marginBottom: 5,
-  },
-  flexRowContainer: {
-    display: 'flex',
-    flexDirection: 'row',
-  },
-  primaryButton: {
-    backgroundColor: '#007bff',
-    paddingVertical: 8,
-    borderRadius: 4,
-  },
-  buttonText: {
-    textAlign: 'center',
-    color: 'white',
-    fontSize: 16,
-    fontWeight: '500',
-  },
-});
 
 export default App;
