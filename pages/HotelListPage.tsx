@@ -116,7 +116,7 @@ const HotelListPage = () => {
         backgroundColor={backgroundStyle.backgroundColor}
       />
       <ScrollView>
-        <View style={{paddingTop: 25, paddingStart: 10, paddingEnd: 10}}>
+        <View style={{paddingTop: 24, paddingStart: 12, paddingEnd: 12}}>
           {hotelList.map(hotel => (
             <View key={hotel.id} style={{...componentStyles.hotelCard}}>
               <Image
@@ -132,9 +132,9 @@ const HotelListPage = () => {
                       borderRadius: 20,
                       display: 'flex',
                       alignItems: 'center',
-                      padding: 5,
+                      padding: 4,
                     }}>
-                    <Text style={{fontSize: 15, color: 'white'}}>
+                    <Text style={{fontSize: 16, color: 'white'}}>
                       {hotel.rating} ⭐
                     </Text>
                   </View>
@@ -168,7 +168,7 @@ const componentStyles = StyleSheet.create({
   hotelCard: {
     position: 'relative',
     backgroundColor: 'white',
-    marginVertical: 10,
+    marginVertical: 12,
     borderColor: 'lightgrey',
     borderWidth: 2,
     boxShadow: '1 1 5',
@@ -191,7 +191,7 @@ const componentStyles = StyleSheet.create({
   hotelPrice: {
     position: 'absolute',
     right: 0,
-    padding: 10,
+    padding: 12,
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
     borderBottomStartRadius: 4,
   },

@@ -13,7 +13,8 @@ import {
 } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
-import {mainStyle as styles} from './mainCss';
+import {mainStyle as styles} from '../mainCss';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const SearchPage = () => {
   const navigation = useNavigation<any>();
@@ -97,55 +98,69 @@ const SearchPage = () => {
       />
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
-        style={{...backgroundStyle, paddingTop: 25}}>
-        <Text
+        style={{backgroundColor: 'white'}}>
+        <View
           style={{
-            fontSize: 50,
-            fontWeight: 'bold',
-            textAlign: 'center',
+            paddingTop: 16,
+            paddingStart: 12,
+            paddingEnd: 12,
+            paddingBottom: 24,
           }}>
-          HMS
-        </Text>
-        <Text
-          style={{
-            fontSize: 20,
-            textAlign: 'center',
-          }}>
-          Hotel Management System
-        </Text>
-
-        <View style={{paddingTop: 25, paddingStart: 10, paddingEnd: 10}}>
-          <View style={{...styles.fieldContainer}}>
-            <Text style={{...styles.fieldCaption}}>Location</Text>
-            <DropDownPicker
-              open={openLocSelect}
-              value={selectedLocId}
-              items={locationList}
-              setOpen={setOpenLocSelect}
-              setValue={setSelectedLocId}
-              listMode={'MODAL'}
-              searchable={true}
-              labelStyle={{fontSize: 16}}
-              selectedItemLabelStyle={{fontSize: 20}}
-              listItemLabelStyle={{fontSize: 16}}
-            />
+          <View>
+            <Text
+              style={{
+                fontSize: 16,
+                fontWeight: 'bold',
+                color: 'gray',
+                textAlign: 'center',
+                letterSpacing: 1.6,
+              }}>
+              SEARCH FOR HOTELS
+            </Text>
           </View>
           <View
             style={{
-              ...styles.flexRowContainer,
-              ...styles.fieldContainer,
-              justifyContent: 'space-between',
+              paddingHorizontal: 8,
+              paddingBottom: 32,
+              marginTop: 16,
+              backgroundColor: 'rgb(243, 243, 243)',
+              boxShadow: '0.24 0.24 4',
+              borderRadius: 8,
             }}>
-            <View style={{flex: 1, marginEnd: 5}}>
+            <View style={{...styles.fieldContainer}}>
+              <Text style={{...styles.fieldCaption}}>Location</Text>
+              <DropDownPicker
+                open={openLocSelect}
+                value={selectedLocId}
+                items={locationList}
+                setOpen={setOpenLocSelect}
+                setValue={setSelectedLocId}
+                placeholder="Select"
+                listMode={'MODAL'}
+                searchable={true}
+                labelStyle={{fontSize: 16}}
+                selectedItemLabelStyle={{fontSize: 20}}
+                listItemLabelStyle={{fontSize: 16}}
+                loading={true}
+              />
+            </View>
+
+            <View style={{...styles.fieldContainer}}>
               <Text style={{...styles.fieldCaption}}>Check-In</Text>
               <View
                 style={{
                   display: 'flex',
                   flexDirection: 'row',
                   justifyContent: 'center',
-                  alignItems: 'center',
+                  alignItems: 'flex-start',
                 }}>
-                <Text style={{width: '75%', fontWeight: '600', fontSize: 20}}>
+                <Text
+                  style={{
+                    width: '68%',
+                    fontWeight: '600',
+                    fontSize: 20,
+                    letterSpacing: 1,
+                  }}>
                   {fromDate.toLocaleDateString('en-GB', {
                     day: '2-digit',
                     month: '2-digit',
@@ -153,22 +168,39 @@ const SearchPage = () => {
                   })}
                 </Text>
                 <Pressable
-                  style={{...styles.primaryButton, width: '25%'}}
+                  style={{
+                    ...styles.primaryButton,
+                    display: 'flex',
+                    flexDirection: 'row',
+                    justifyContent: 'center',
+                    gap: 12,
+                    width: '32%',
+                  }}
                   onPress={openFromDatePickHandler}>
-                  <Text style={{...styles.buttonText}}>Date</Text>
+                  <Text
+                    style={{...styles.buttonText, textAlignVertical: 'center'}}>
+                    Pick
+                  </Text>
+                  <Icon name="calendar-sharp" color={'white'} size={20} />
                 </Pressable>
               </View>
             </View>
-            <View style={{flex: 1, marginEnd: 5}}>
+            <View style={{...styles.fieldContainer}}>
               <Text style={{...styles.fieldCaption}}>Check-out</Text>
               <View
                 style={{
                   display: 'flex',
                   flexDirection: 'row',
                   justifyContent: 'center',
-                  alignItems: 'center',
+                  alignItems: 'flex-start',
                 }}>
-                <Text style={{width: '75%', fontWeight: '600', fontSize: 20}}>
+                <Text
+                  style={{
+                    width: '68%',
+                    fontWeight: '600',
+                    fontSize: 20,
+                    letterSpacing: 1,
+                  }}>
                   {toDate.toLocaleDateString('en-GB', {
                     day: '2-digit',
                     month: '2-digit',
@@ -176,20 +208,25 @@ const SearchPage = () => {
                   })}
                 </Text>
                 <Pressable
-                  style={{...styles.primaryButton, width: '25%'}}
+                  style={{
+                    ...styles.primaryButton,
+                    display: 'flex',
+                    flexDirection: 'row',
+                    justifyContent: 'center',
+                    gap: 12,
+                    width: '32%',
+                  }}
                   onPress={openToDatePickHandler}>
-                  <Text style={{...styles.buttonText}}>Date</Text>
+                  <Text
+                    style={{...styles.buttonText, textAlignVertical: 'center'}}>
+                    Pick
+                  </Text>
+                  <Icon name="calendar-sharp" color={'white'} size={20} />
                 </Pressable>
               </View>
             </View>
-          </View>
-          <View
-            style={{
-              ...styles.flexRowContainer,
-              ...styles.fieldContainer,
-              justifyContent: 'space-between',
-            }}>
-            <View style={{flex: 1, marginEnd: 5}}>
+
+            <View style={{...styles.fieldContainer}}>
               <Text style={{...styles.fieldCaption}}>Rooms</Text>
 
               <DropDownPicker
@@ -198,6 +235,7 @@ const SearchPage = () => {
                 items={roomCountList}
                 setOpen={setOpenRoomSelect}
                 setValue={setRoomCountId}
+                placeholder="Select"
                 listMode={'MODAL'}
                 searchable={true}
                 labelStyle={{fontSize: 16}}
@@ -205,7 +243,7 @@ const SearchPage = () => {
                 listItemLabelStyle={{fontSize: 16}}
               />
             </View>
-            <View style={{flex: 1, marginStart: 5}}>
+            <View style={{...styles.fieldContainer}}>
               <Text style={{...styles.fieldCaption}}>Persons</Text>
 
               <DropDownPicker
@@ -214,6 +252,7 @@ const SearchPage = () => {
                 items={personCountList}
                 setOpen={setOpenPersonSelect}
                 setValue={setPersonCountId}
+                placeholder="Select"
                 listMode={'MODAL'}
                 searchable={true}
                 labelStyle={{fontSize: 16}}
@@ -221,29 +260,36 @@ const SearchPage = () => {
                 listItemLabelStyle={{fontSize: 16}}
               />
             </View>
-          </View>
-          <View
-            style={{
-              ...styles.fieldContainer,
-              ...styles.flexRowContainer,
-              justifyContent: 'center',
-              columnGap: 10,
-              paddingTop: 20,
-            }}>
-            <Pressable
-              style={{...styles.primaryButton, width: '25%'}}
-              onPress={search}
-              unstable_pressDelay={200}
-              android_ripple={{color: 'white'}}>
-              <Text style={{...styles.buttonText}}>Search</Text>
-            </Pressable>
-            <Pressable
-              style={{...styles.primaryButton, width: '25%'}}
-              onPress={reset}
-              unstable_pressDelay={200}
-              android_ripple={{color: 'white'}}>
-              <Text style={{...styles.buttonText}}>Reset</Text>
-            </Pressable>
+
+            <View
+              style={{
+                ...styles.fieldContainer,
+                paddingTop: 20,
+              }}>
+              <Pressable
+                style={{
+                  ...styles.primaryButton,
+                  width: '75%',
+                  margin: 'auto',
+                  marginBottom: 10,
+                }}
+                onPress={search}
+                unstable_pressDelay={200}
+                android_ripple={{color: 'white'}}>
+                <Text style={{...styles.buttonText}}>Search</Text>
+              </Pressable>
+              <Pressable
+                style={{
+                  ...styles.secondaryButton,
+                  width: '75%',
+                  margin: 'auto',
+                }}
+                onPress={reset}
+                unstable_pressDelay={200}
+                android_ripple={{color: 'white'}}>
+                <Text style={{...styles.buttonText}}>Reset</Text>
+              </Pressable>
+            </View>
           </View>
         </View>
       </ScrollView>
@@ -251,30 +297,6 @@ const SearchPage = () => {
   );
 };
 
-const componentStyles = StyleSheet.create({
-  fieldContainer: {
-    paddingTop: 8,
-    paddingBottom: 8,
-  },
-  fieldCaption: {
-    fontSize: 16,
-    marginBottom: 5,
-  },
-  flexRowContainer: {
-    display: 'flex',
-    flexDirection: 'row',
-  },
-  primaryButton: {
-    backgroundColor: '#007bff',
-    paddingVertical: 8,
-    borderRadius: 4,
-  },
-  buttonText: {
-    textAlign: 'center',
-    color: 'white',
-    fontSize: 16,
-    fontWeight: '500',
-  },
-});
+const componentStyles = StyleSheet.create({});
 
 export default SearchPage;

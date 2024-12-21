@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
-import {mainStyle as styles} from './mainCss';
+import {mainStyle as styles} from '../mainCss';
 import Icon from 'react-native-vector-icons/FontAwesome6';
 import {useNavigation} from '@react-navigation/native';
 
@@ -61,6 +61,7 @@ const IntroductionPage = () => {
                 fontSize: 25,
                 fontWeight: 'bold',
                 color: 'white',
+                letterSpacing: 1,
               }}>
               Hotel Booking System
             </Text>
@@ -70,6 +71,7 @@ const IntroductionPage = () => {
                 fontSize: 15,
                 fontWeight: '500',
                 color: 'white',
+                letterSpacing: 1,
               }}>
               Stay Your Way, Anytime, Anywhere!
             </Text>

@@ -23,7 +23,7 @@ const RootStack = () => {
         headerTitle: undefined, // This removes the default route name
         headerBackButtonDisplayMode: 'generic',
         headerTintColor: 'white',
-        headerStyle: {backgroundColor: 'rgba(26, 101, 158, 1)'},
+        headerStyle: {backgroundColor: 'rgba(0, 78, 137, 1)'},
       }}>
       <Stack.Screen name="Home" component={SearchPage} />
       <Stack.Screen name="Hotels" component={HotelListPage} />
