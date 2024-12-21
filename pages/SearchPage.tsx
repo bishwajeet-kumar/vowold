@@ -63,8 +63,10 @@ const SearchPage = () => {
     DateTimePickerAndroid.open({
       mode: 'date',
       value: fromDate,
+      minimumDate: new Date(),
       onChange: (event, date: any) => {
         setFromDate(date);
+        if (toDate.getTime() < date.getTime()) setToDate(date);
       },
     });
   };
@@ -72,6 +74,7 @@ const SearchPage = () => {
     DateTimePickerAndroid.open({
       mode: 'date',
       value: toDate,
+      minimumDate: fromDate,
       onChange: (event, date: any) => {
         setToDate(date);
       },
@@ -141,7 +144,6 @@ const SearchPage = () => {
                 labelStyle={{fontSize: 16}}
                 selectedItemLabelStyle={{fontSize: 20}}
                 listItemLabelStyle={{fontSize: 16}}
-                loading={true}
               />
             </View>
 
@@ -152,13 +154,13 @@ const SearchPage = () => {
                   display: 'flex',
                   flexDirection: 'row',
                   justifyContent: 'center',
-                  alignItems: 'flex-start',
+                  alignItems: 'center',
                 }}>
                 <Text
                   style={{
                     width: '68%',
                     fontWeight: '600',
-                    fontSize: 20,
+                    fontSize: 16,
                     letterSpacing: 1,
                   }}>
                   {fromDate.toLocaleDateString('en-GB', {
@@ -192,13 +194,13 @@ const SearchPage = () => {
                   display: 'flex',
                   flexDirection: 'row',
                   justifyContent: 'center',
-                  alignItems: 'flex-start',
+                  alignItems: 'center',
                 }}>
                 <Text
                   style={{
                     width: '68%',
                     fontWeight: '600',
-                    fontSize: 20,
+                    fontSize: 16,
                     letterSpacing: 1,
                   }}>
                   {toDate.toLocaleDateString('en-GB', {

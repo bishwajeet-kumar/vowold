@@ -116,7 +116,19 @@ const HotelListPage = () => {
         backgroundColor={backgroundStyle.backgroundColor}
       />
       <ScrollView>
-        <View style={{paddingTop: 24, paddingStart: 12, paddingEnd: 12}}>
+        <View style={{paddingTop: 16, paddingStart: 12, paddingEnd: 12}}>
+          <View style={{paddingBottom: 16}}>
+            <Text
+              style={{
+                fontSize: 16,
+                fontWeight: 'bold',
+                color: 'gray',
+                textAlign: 'center',
+                letterSpacing: 1.6,
+              }}>
+              CHOOSE YOUR STAY
+            </Text>
+          </View>
           {hotelList.map(hotel => (
             <View key={hotel.id} style={{...componentStyles.hotelCard}}>
               <Image
@@ -125,7 +137,9 @@ const HotelListPage = () => {
               />
               <View style={{...componentStyles.hotelSpecs}}>
                 <Text style={{...componentStyles.hotelName}}>
-                  {hotel.name}{' '}
+                  {hotel.name.length > 20
+                    ? hotel.name.substring(0, 20) + '...'
+                    : hotel.name}{' '}
                   <View
                     style={{
                       backgroundColor: 'black',
@@ -142,7 +156,7 @@ const HotelListPage = () => {
                 <Text style={{...componentStyles.hotelProp}}>
                   {hotel.location}
                 </Text>
-                <Text style={{...componentStyles.hotelProp}}>
+                <Text style={{...componentStyles.hotelProp, fontWeight: '700'}}>
                   {hotel.available_rooms} rooms available
                 </Text>
               </View>
@@ -168,10 +182,8 @@ const componentStyles = StyleSheet.create({
   hotelCard: {
     position: 'relative',
     backgroundColor: 'white',
-    marginVertical: 12,
-    borderColor: 'lightgrey',
-    borderWidth: 2,
-    boxShadow: '1 1 5',
+    marginBottom: 12,
+    boxShadow: '0.24 0.24 4',
     borderRadius: 4,
   },
   hotelThumbnail: {
